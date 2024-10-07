@@ -3,11 +3,11 @@ function histogramImage = imageHistogram(image)
         % Convert RGB image to grayscale
         image = rgb2gray(image);
     end
-    
+    % initiate counter array
     histogramCounts = zeros(256, 1);
-
+    
     [rows, cols] = size(image);
-
+    % iterate through all pixel in image and count frequency
     for r = 1:rows
         for c = 1:cols
             intensity = image(r, c) + 1;
@@ -15,14 +15,6 @@ function histogramImage = imageHistogram(image)
             histogramCounts(intensity) = histogramCounts(intensity) + 1;
         end
     end
-
-%     figure;
-%     bar(0:255, histogramCounts, 'FaceColor', 'b');
-%     xlim([0 255]);
-%     xlabel('Gray Level');
-%     ylabel('Frequency');
-%     title('Image Histogram');
-%     grid on;
-
+    % return counter array
     histogramImage = histogramCounts;
 end
